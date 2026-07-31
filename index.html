@@ -65,26 +65,35 @@
       text-shadow: 0 2px 10px rgba(0,0,0,.35);
     }
 
-    .bottom-nav {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      align-items: end;
-      gap: 12px;
-      margin-top: 30px;
-    }
+    .bottom-nav{
+    position:fixed;
+    bottom:28px;
+    left:0;
+    right:0;
 
-    .nav-item {
-      color: white;
-      text-decoration: none;
-      text-align: center;
-      font-size: 14px;
-    }
+    display:flex;
+    justify-content:space-evenly;
 
-    .icon {
-      display: block;
-      font-size: 34px;
-      margin-bottom: 8px;
-    }
+    max-width:500px;
+    margin:auto;
+}
+
+.nav-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+}
+
+.nav-item img{
+    width:42px;
+    height:42px;
+}
 
     select {
       appearance: none;
@@ -139,14 +148,17 @@
 
     <nav class="bottom-nav">
 
-     <img src="book.png" alt="Book" style="width:28px;height:28px;">
+<a class="nav-item" id="chapterLink" href="https://www.biblija.net" target="_blank">
+    <img src="book.png" alt="Book">
+    <span>Preberi poglavje</span>
+</a>
 
-      <img src="shop.png" alt="Shop" style="width:28px;height:28px;">
+<a class="nav-item" href="https://bozjabeseda.com" target="_blank">
+    <img src="shop.png" alt="Shop">
+    <span>Trgovina</span>
+</a>
 
-    
-
-    </nav>
-
+</nav>
   </main>
 
   <script>
