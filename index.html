@@ -94,6 +94,28 @@
     width:70px;
     height:70px;
 }
+    .left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.left img{
+    width:40px;
+    height:40px;
+}
+    .left div{
+    display:flex;
+    flex-direction:column;
+}
+
+.left span{
+    color:white;
+    font-size:18px;
+    font-weight:400;
+    line-height:1.1;
+    text-align:left;
+}
 
     select {
       appearance: none;
@@ -148,11 +170,13 @@
 
     <nav class="bottom-nav">
 
-    <a class="nav-item left" id="chapterLink" href="https://www.biblija.net" target="_blank">
-        <img src="book.png" alt="Book">
-        <span>Preberi poglavje</span>
-    </a>
-
+   <a class="nav-item left" id="chapterLink" href="https://www.biblija.net" target="_blank">
+    <img src="book.png" alt="Book">
+    <div>
+        <span>Preberi</span>
+        <span>poglavje</span>
+    </div>
+</a>
     <a class="nav-item center" href="https://bozjabeseda.com" target="_blank">
         <img src="shop.png" alt="Shop">
     </a>
