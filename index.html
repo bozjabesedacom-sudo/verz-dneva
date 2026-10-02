@@ -220,72 +220,32 @@
 </nav>
   </main>
 
-  <script>
-    const verses = [
-      {
-        sl: {
-          reference: "1 Peter 1:3",
-          text: "Slavljen Bog in Oče našega Gospoda Jezusa Kristusa! Po svojem velikem usmiljenju nas je prerodil za živo upanje.",
-          chapter: "https://www.biblija.net/biblija.cgi?m=1+Pt+1"
-        },
-        en: {
-          reference: "1 Peter 1:3",
-          text: "Praise be to the God and Father of our Lord Jesus Christ! In his great mercy he has given us new birth into a living hope.",
-          chapter: "https://www.biblegateway.com/passage/?search=1%20Peter%201"
-        }
-      },
-      {
-        sl: {
-          reference: "Psalm 23:1",
-          text: "Gospod je moj pastir, nič mi ne manjka.",
-          chapter: "https://www.biblija.net/biblija.cgi?m=Ps+23"
-        },
-        en: {
-          reference: "Psalm 23:1",
-          text: "The Lord is my shepherd; I shall not want.",
-          chapter: "https://www.biblegateway.com/passage/?search=Psalm%2023"
-        }
-      },
-      {
-        sl: {
-          reference: "Filipljanom 4:13",
-          text: "Vse zmorem v njem, ki mi daje moč.",
-          chapter: "https://www.biblija.net/biblija.cgi?m=Flp+4"
-        },
-        en: {
-          reference: "Philippians 4:13",
-          text: "I can do all things through Christ who strengthens me.",
-          chapter: "https://www.biblegateway.com/passage/?search=Philippians%204"
-        }
-      }
-    ];
+  <script src="verses_365_ssp_mixed.js"></script>
 
-    const startDate = new Date("2026-01-01T00:00:00");
-    const today = new Date();
+<script>
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Ljubljana",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(new Date());
 
-    const dayNumber = Math.floor(
-      (today.setHours(0,0,0,0) - startDate.getTime()) / 86400000
-    );
+  const year = Number(parts.find(p => p.type === "year").value);
+  const month = Number(parts.find(p => p.type === "month").value);
+  const day = Number(parts.find(p => p.type === "day").value);
 
-    const verseIndex =
-      ((dayNumber % verses.length) + verses.length) % verses.length;
+  const today = Date.UTC(year, month - 1, day);
+  const start = Date.UTC(year, 0, 1);
 
-    const languageSelect = document.getElementById("language");
+  const dayOfYear = Math.floor((today - start) / 86400000);
 
-    function showVerse(language) {
-      const selected = verses[verseIndex][language];
+  const verseIndex = dayOfYear % verses.length;
+  const selected = verses[verseIndex];
 
-      document.getElementById("reference").textContent = selected.reference;
-      document.getElementById("verse").textContent = selected.text;
-      document.getElementById("chapterLink").href = selected.chapter;
-    }
-
-    languageSelect.addEventListener("change", function () {
-      showVerse(this.value);
-    });
-
-    showVerse("sl");
-  </script>
+  document.getElementById("reference").textContent = selected.reference;
+  document.getElementById("verse").textContent = selected.text;
+  document.getElementById("chapterLink").href = selected.chapter;
+</script>
 
 </body>
 </html>
