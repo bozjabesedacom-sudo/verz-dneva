@@ -247,7 +247,7 @@
   document.getElementById("chapterLink").href = selected.chapter;
 
   // Avtomatsko ozadje dneva
-const bgCount = 150;
+const bgCount = 34;
 const bgIndex = (dayOfYear % bgCount) + 1;
 
 document.querySelector(".page").style.backgroundImage = `
@@ -258,7 +258,7 @@ document.querySelector(".page").style.backgroundImage = `
     rgba(0,0,0,.46) 72%,
     rgba(0,0,0,.75)
   ),
- url("https://loremflickr.com/720/1280/nature,landscape,mountains,forest?lock=${bgIndex}")
+ url("backgrounds/bg${bgIndex}.jpg")
 `;
 </script>
 
